@@ -22,6 +22,10 @@ MOV ::= left INSTRUCCIONES
     | back INSTRUCCIONES
     | up INSTRUCCIONES
     | start INSTRUCCIONES
+
+* javacc Analizador.jj
+* javac *.java
+* java Analizador < prueba.txt 
 */
 
 PARSER_BEGIN(Analizador)
@@ -91,11 +95,11 @@ void MotorOp () :
 void Mov ():
 {}
 {
-  <LEFT> Instrucciones()
-  | <RIGHT> Instrucciones()
-  | <FRONT> Instrucciones()
-  | <BACK> Instrucciones()
-  | <UP> Instrucciones()
-  | <START> Instrucciones()
+  <LEFT> <PYC> Instrucciones()
+  | <RIGHT> <PYC> Instrucciones()
+  | <FRONT> <PYC> Instrucciones()
+  | <BACK> <PYC> Instrucciones()
+  | <UP> <PYC> Instrucciones()
+  | <START> <PYC> Instrucciones()
 }
 
