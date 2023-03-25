@@ -1,0 +1,101 @@
+/*
+Símbolo No Terminal Inicial = S
+
+Símbolos No Terminales = {S, INSTRUCCIONES, MOTOR, MOTOROP, MOV}
+
+Símbolos Terminales = {pyc, on, off, left, right, front, back, up, start, numero}
+
+S ::= INSTRUCCIONES
+
+INSTRUCCIONES ::= MOTOR
+    | MOV
+    | epsilon
+
+MOTOR ::= motor numero MOTOROP pyc INSTRUCCIONES
+
+MOTOROP ::= on
+    | off
+
+MOV ::= left INSTRUCCIONES
+    | right INSTRUCCIONES
+    | front INSTRUCCIONES
+    | back INSTRUCCIONES
+    | up INSTRUCCIONES
+    | start INSTRUCCIONES
+*/
+
+PARSER_BEGIN(Analizador)
+  class Analizador{
+    public static void main (String[] args) throws ParseException {
+      try {
+        Analizador analizador = new Analizador(System.in);
+        analizador.Programa();
+        System.out.println("Se ha compilado con éxito");
+      } catch (ParseException e) {
+        System.out.println(e.getMessage());
+        System.out.println("Se han encontrado errores");
+      }
+    }
+  }
+PARSER_END(Analizador)
+
+TOKEN:
+{
+  <MOTOR: "motor" > {System.out.println("MOTOR -> " + image);}
+  |<PYC: ";" > {System.out.println("PYC -> " + image);}
+  |<ON: "on" > {System.out.println("ON -> " + image);}
+  |<OFF: "off" > {System.out.println("OFF -> " + image);}
+  |<LEFT: "left" > {System.out.println("LEFT -> " + image);}
+  |<RIGHT: "right" > {System.out.println("RIGHT -> " + image);}
+  |<FRONT: "front" > {System.out.println("FRONT -> " + image);}
+  |<BACK: "back" > {System.out.println("BACK -> " + image);}
+  |<UP: "up" > {System.out.println("UP -> " + image);}
+  |<START: "start" > {System.out.println("START -> " + image);}
+  |<NUMERO: (["0"-"9"])+ > {System.out.println("NUMERO -> " + image);}
+}
+SKIP:
+{
+  " " | "\r\n" | "\t" | "\n"
+}
+
+void Programa () :
+{}
+{
+  S()
+}
+
+void S() :
+{}
+{
+  Instrucciones()
+}
+
+void Instrucciones () :
+{}
+{
+  Motor() | Mov() | {}
+}
+
+void Motor() :
+{}
+{
+  <MOTOR><NUMERO> MotorOp() <PYC> Instrucciones()
+}
+
+void MotorOp () :
+{}
+{
+  <ON> | <OFF>
+}
+
+void Mov ():
+{}
+{
+  <LEFT> Instrucciones()
+  | <RIGHT> Instrucciones()
+  | <FRONT> Instrucciones()
+  | <BACK> Instrucciones()
+  | <UP> Instrucciones()
+  | <START> Instrucciones()
+}
+
