@@ -102,6 +102,6 @@ void Mov ():
   | <FRONT> <NUMERO> <PYC> Instrucciones()
   | <BACK> <NUMERO> <PYC> Instrucciones()
   | <UP> <NUMERO> <PYC> Instrucciones()
-  | <START> <NUMERO> <PYC> Instrucciones()
+  | <START> <PYC> Instrucciones()
 }
 
