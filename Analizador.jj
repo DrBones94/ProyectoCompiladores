@@ -16,16 +16,18 @@ MOTOR ::= motor numero MOTOROP pyc INSTRUCCIONES
 MOTOROP ::= on
     | off
 
-MOV ::= left INSTRUCCIONES
-    | right INSTRUCCIONES
-    | front INSTRUCCIONES
-    | back INSTRUCCIONES
-    | up INSTRUCCIONES
-    | start INSTRUCCIONES
+MOV ::= left numero pyc INSTRUCCIONES
+    | right numero pyc INSTRUCCIONES
+    | front numero pyc INSTRUCCIONES
+    | back numero pyc INSTRUCCIONES
+    | up numero pyc INSTRUCCIONES
+    | start pyc INSTRUCCIONES
 
 * javacc Analizador.jj
 * javac *.java
 * java Analizador < prueba.txt 
+
+emarroquinm@miumg.edu.gt
 */
 
 PARSER_BEGIN(Analizador)
@@ -95,11 +97,11 @@ void MotorOp () :
 void Mov ():
 {}
 {
-  <LEFT> <PYC> Instrucciones()
-  | <RIGHT> <PYC> Instrucciones()
-  | <FRONT> <PYC> Instrucciones()
-  | <BACK> <PYC> Instrucciones()
-  | <UP> <PYC> Instrucciones()
-  | <START> <PYC> Instrucciones()
+  <LEFT> <NUMERO> <PYC> Instrucciones()
+  | <RIGHT> <NUMERO> <PYC> Instrucciones()
+  | <FRONT> <NUMERO> <PYC> Instrucciones()
+  | <BACK> <NUMERO> <PYC> Instrucciones()
+  | <UP> <NUMERO> <PYC> Instrucciones()
+  | <START> <NUMERO> <PYC> Instrucciones()
 }
 
