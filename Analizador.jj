@@ -1,4 +1,12 @@
 /*
+GRUPO 7
+* Marco López           0900-10-273
+* Danilo Pineda         0900-13-1918
+* Ricardo Ruiz          0900-14-19377
+* Gilberto Marroquín    0900-15-868
+* Jeyson Mazariegos     0900-16-5903
+* José Alfredo Jiménez  0900-18-5572
+
 Símbolo No Terminal Inicial = S
 
 Símbolos No Terminales = {S, INSTRUCCIONES, MOTOR, MOTOROP, MOV}
